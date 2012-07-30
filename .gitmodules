@@ -1,0 +1,9 @@
+[submodule "vendor/jasmine"]
+	path = vendor/jasmine
+	url = git://github.com/pivotal/jasmine
+[submodule "vendor/requirejs"]
+	path = vendor/requirejs
+	url = git://github.com/jrburke/requirejs
+[submodule "vendor/requirejs-text"]
+	path = vendor/requirejs-text
+	url = git://github.com/requirejs/text

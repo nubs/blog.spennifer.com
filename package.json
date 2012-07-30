@@ -1,0 +1,16 @@
+{
+  "name": "blog.spennifer.com",
+  "description": "spennifer blog",
+  "version": "0.1.0",
+  "author": "Spencer Rinehart",
+  "email": "anubis@overthemonkey.com",
+  "directories": {"pages": "./pages"},
+  "dependencies": {
+    "grunt": ">=0.3.11",
+    "grunt-jasmine-task": ">=0.2.1",
+    "grunt-contrib": ">=0.1.3"
+  },
+  "scripts": {
+    "test": "grunt travis --verbose"
+  }
+}
