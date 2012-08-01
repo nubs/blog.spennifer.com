@@ -15,6 +15,7 @@ define ['models/post', '../fixtures/post', '../helpers/helpers'], (Post, PostFix
       beforeEach ->
         this.server = sinon.fakeServer.create()
         this.server.respondWith 'POST', '/collection', Helpers.validResponse PostFixtures.valid[0]
+        this.eventSpy = sinon.spy()
 
       afterEach -> this.server.restore()
 
@@ -23,3 +24,9 @@ define ['models/post', '../fixtures/post', '../helpers/helpers'], (Post, PostFix
         expect(this.server.requests[0].method).toEqual 'POST'
         expect(this.server.requests[0].url).toEqual '/collection'
         expect(JSON.parse(this.server.requests[0].requestBody)).toEqual this.post.attributes
+
+      it 'should fail when title is empty', ->
+        this.post.bind 'error', this.eventSpy
+        this.post.save title: ''
+        expect(this.eventSpy).toHaveBeenCalledOnce()
+        expect(this.eventSpy).toHaveBeenCalledWith this.post, 'Post cannot have an empty title.'
