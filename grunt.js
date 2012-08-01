@@ -8,7 +8,8 @@ module.exports = function(grunt) {
           bare: false
         },
         files: {
-          'build/scripts/models/post.js': 'scripts/models/post.coffee'
+          'build/scripts/models/post.js': 'scripts/models/post.coffee',
+          'build/scripts/collections/posts.js': 'scripts/collections/posts.coffee'
         }
       },
       specs: {
@@ -18,7 +19,8 @@ module.exports = function(grunt) {
         files: {
           'build/specs/helpers/helpers.js': 'specs/helpers/helpers.coffee',
           'build/specs/fixtures/post.js': 'specs/fixtures/post.coffee',
-          'build/specs/models/post.spec.js': 'specs/models/post.spec.coffee'
+          'build/specs/models/post.spec.js': 'specs/models/post.spec.coffee',
+          'build/specs/collections/posts.spec.js': 'specs/collections/posts.spec.coffee'
         }
       }
     },
