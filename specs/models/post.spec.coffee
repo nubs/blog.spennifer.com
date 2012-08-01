@@ -8,6 +8,9 @@ define ['models/post', '../fixtures/post', '../helpers/helpers'], (Post, PostFix
       it 'should exhibit attributes', ->
         expect(this.post.get 'title').toEqual PostFixtures.valid[0].title
 
+      it 'should not be published', ->
+        expect(this.post.get 'published').toBe false
+
     describe 'when saving', ->
       beforeEach ->
         this.server = sinon.fakeServer.create()
