@@ -12,3 +12,9 @@ define ['routers/router'], (Router) ->
       this.router.navigate '', true
       expect(this.routeSpy).toHaveBeenCalledOnce()
       expect(this.routeSpy).toHaveBeenCalledWith()
+
+    it 'routes to the posts detail page', ->
+      this.router.bind 'route:post', this.routeSpy
+      this.router.navigate 'posts/1', true
+      expect(this.routeSpy).toHaveBeenCalledOnce()
+      expect(this.routeSpy).toHaveBeenCalledWith '1'
