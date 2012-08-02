@@ -20,3 +20,21 @@ define ['collections/posts', '../fixtures/post', '../helpers/helpers'], (Posts, 
       it 'should have called the model constructor', ->
         expect(this.postStub).toHaveBeenCalledOnce()
         expect(this.postStub).toHaveBeenCalledWith PostFixtures.valid[0]
+
+    describe 'when fetching from server', ->
+      beforeEach ->
+        this.server = sinon.fakeServer.create()
+        this.server.respondWith 'GET', '/posts', Helpers.validResponse PostFixtures.valid
+
+      afterEach -> this.server.restore()
+
+      it 'should make the correct request', ->
+        this.posts.fetch()
+        expect(this.server.requests.length).toEqual 1
+        expect(this.server.requests[0].method).toEqual 'GET'
+        expect(this.server.requests[0].url).toEqual '/posts'
+
+      it 'should parse the posts from the response', ->
+        this.posts.fetch()
+        this.server.respond()
+        expect(this.posts.toJSON()).toEqual PostFixtures.valid
