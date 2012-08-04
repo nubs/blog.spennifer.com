@@ -1,20 +1,20 @@
 define ['routers/router'], (Router) ->
   describe 'Routes', ->
     beforeEach ->
-      this.router = new Router
-      this.routeSpy = sinon.spy()
+      @router = new Router
+      @routeSpy = sinon.spy()
       try Backbone.history.start silent: true
 
-      this.router.navigate 'elsewhere'
+      @router.navigate 'elsewhere'
 
     it 'defaults to the index route', ->
-      this.router.bind 'route:index', this.routeSpy
-      this.router.navigate '', true
-      expect(this.routeSpy).toHaveBeenCalledOnce()
-      expect(this.routeSpy).toHaveBeenCalledWith()
+      @router.bind 'route:index', @routeSpy
+      @router.navigate '', true
+      expect(@routeSpy).toHaveBeenCalledOnce()
+      expect(@routeSpy).toHaveBeenCalledWith()
 
     it 'routes to the posts detail page', ->
-      this.router.bind 'route:post', this.routeSpy
-      this.router.navigate 'posts/1', true
-      expect(this.routeSpy).toHaveBeenCalledOnce()
-      expect(this.routeSpy).toHaveBeenCalledWith '1'
+      @router.bind 'route:post', @routeSpy
+      @router.navigate 'posts/1', true
+      expect(@routeSpy).toHaveBeenCalledOnce()
+      expect(@routeSpy).toHaveBeenCalledWith '1'
