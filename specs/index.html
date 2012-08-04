@@ -12,7 +12,7 @@
   </head>
   <body>
     <script type="text/javascript">
-      require.config({
+      var requireConfig = {
         baseUrl: '../scripts',
         shim: {
           underscore: {exports: '_'},
@@ -24,7 +24,16 @@
           backbone: 'http://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.2/backbone-min',
           text: '../vendor/requirejs-text/text'
         }
-      });
+      };
+      require.config(requireConfig);
+
+      function createContext(map) {
+        var contextConfig = requireConfig;
+        contextConfig.context = Math.floor(Math.random() * 1000000);
+        contextConfig.map = {'*': map};
+
+        return require.config(contextConfig);
+      }
 
       require(['../specs/models/post.spec', '../specs/collections/posts.spec', '../specs/routers/routes.spec'], function() {
         jasmine.getEnv().addReporter(new jasmine.TrivialReporter());

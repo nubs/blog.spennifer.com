@@ -1,13 +1,17 @@
-define ['collections/posts', '../fixtures/post', '../helpers/helpers'], (Posts, PostFixtures, Helpers) ->
+# This stub is unfortunately global to this spec.  I can't find a way to keep
+# that from being the case.  The models/post module needs to be defined before
+# the collections/post module is loaded, and putting it first means that the
+# stub has to be global.
+postStub = sinon.stub()
+context = createContext 'models/post': 'stubmodels/post'
+define 'stubmodels/post', [], -> postStub
+
+context ['backbone', '../specs/fixtures/post', '../specs/helpers/helpers', 'collections/posts'], (Backbone, PostFixtures, Helpers, Posts) ->
   describe 'Posts collection', ->
     beforeEach ->
       this.post1 = new Backbone.Model PostFixtures.valid[0]
-
-      this.postStub = sinon.stub()
-      this.postStub.returns this.post1
-
+      postStub.returns this.post1
       this.posts = new Posts()
-      this.posts.model = this.postStub
 
     describe 'when instantiated with a model literal', ->
       beforeEach ->
@@ -18,8 +22,7 @@ define ['collections/posts', '../fixtures/post', '../helpers/helpers'], (Posts, 
         expect(this.posts.get 1).toEqual this.post1
 
       it 'should have called the model constructor', ->
-        expect(this.postStub).toHaveBeenCalledOnce()
-        expect(this.postStub).toHaveBeenCalledWith PostFixtures.valid[0]
+        expect(postStub).toHaveBeenCalledWith PostFixtures.valid[0]
 
     describe 'when fetching from server', ->
       beforeEach ->
