@@ -35,7 +35,7 @@
         return require.config(contextConfig);
       }
 
-      require(['../specs/models/post.spec', '../specs/collections/posts.spec', '../specs/routers/routes.spec'], function() {
+      require(['../specs/models/post.spec', '../specs/collections/posts.spec', '../specs/routers/routes.spec', '../specs/routers/routers.spec'], function() {
         jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
         jasmine.getEnv().execute();
       });
