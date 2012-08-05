@@ -1,2 +1,3 @@
 define ['backbone'], (Backbone) ->
-  PostsView = Backbone.View.extend()
+  PostsView = Backbone.View.extend
+    tagName: 'ul'
