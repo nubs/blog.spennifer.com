@@ -11,7 +11,8 @@ module.exports = function(grunt) {
           'build/scripts/models/post.js': 'scripts/models/post.coffee',
           'build/scripts/collections/posts.js': 'scripts/collections/posts.coffee',
           'build/scripts/routers/router.js': 'scripts/routers/router.coffee',
-          'build/scripts/views/posts.js': 'scripts/views/posts.coffee'
+          'build/scripts/views/posts.js': 'scripts/views/posts.coffee',
+          'build/scripts/views/post.js': 'scripts/views/post.coffee'
         }
       },
       specs: {

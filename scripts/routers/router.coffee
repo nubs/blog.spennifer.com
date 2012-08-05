@@ -1,4 +1,4 @@
-define ['backbone', 'collections/posts', 'views/posts'], (Backbone, Posts, PostsView) ->
+define ['backbone', 'collections/posts', 'views/posts', 'models/post', 'views/post'], (Backbone, Posts, PostsView, Post, PostView) ->
   Router = Backbone.Router.extend
     routes:
       '': 'index'
@@ -8,3 +8,5 @@ define ['backbone', 'collections/posts', 'views/posts'], (Backbone, Posts, Posts
       @postsView = new PostsView collection: @posts
       @posts.fetch()
     post: (id) ->
+      @post = new Post id: id
+      @postView = new PostView model: @post
