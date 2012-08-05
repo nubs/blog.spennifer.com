@@ -46,6 +46,11 @@ module.exports = function(grunt) {
           'build/vendor/jasmine-sinon': 'vendor/jasmine-sinon/lib/jasmine-sinon.js'
         }
       },
+      jasmineJquery: {
+        files: {
+          'build/vendor/jasmine-jquery': 'vendor/jasmine-jquery/lib/jasmine-jquery.js'
+        }
+      },
       requirejs: {
         files: {
           'build/vendor/requirejs': 'vendor/requirejs/require.js'
