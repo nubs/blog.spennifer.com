@@ -8,6 +8,7 @@ context ['backbone', 'routers/router'], (Backbone, Router) ->
   describe 'Router', ->
     beforeEach ->
       @collection = new Backbone.Collection
+      @fetchStub = sinon.stub(@collection, 'fetch').returns null
       postsStub.returns @collection
       postsViewStub.returns new Backbone.View
       @router = new Router
@@ -21,3 +22,7 @@ context ['backbone', 'routers/router'], (Backbone, Router) ->
 
       it 'should create a post list view', ->
         expect(postsViewStub).toHaveBeenCalledWith collection: @collection
+
+      it 'shoud fetch the posts collection from the server', ->
+        expect(@fetchStub).toHaveBeenCalledOnce()
+        expect(@fetchStub).toHaveBeenCalledWith()

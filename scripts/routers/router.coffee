@@ -6,4 +6,5 @@ define ['backbone', 'collections/posts', 'views/posts'], (Backbone, Posts, Posts
     index: ->
       @posts = new Posts
       @postsView = new PostsView collection: @posts
+      @posts.fetch()
     post: (id) ->
