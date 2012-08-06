@@ -26,7 +26,8 @@ module.exports = function(grunt) {
           'build/specs/collections/posts.spec.js': 'specs/collections/posts.spec.coffee',
           'build/specs/routers/routes.spec.js': 'specs/routers/routes.spec.coffee',
           'build/specs/routers/routers.spec.js': 'specs/routers/routers.spec.coffee',
-          'build/specs/views/posts.spec.js': 'specs/views/posts.spec.coffee'
+          'build/specs/views/posts.spec.js': 'specs/views/posts.spec.coffee',
+          'build/specs/views/post.spec.js': 'specs/views/post.spec.coffee'
         }
       }
     },
@@ -34,6 +35,11 @@ module.exports = function(grunt) {
       specrunner: {
         files: {
           'build/specs': 'specs/*'
+        }
+      },
+      templates: {
+        files: {
+          'build/scripts/templates': 'scripts/templates/*'
         }
       },
       jasmine: {
