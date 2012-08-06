@@ -6,7 +6,7 @@ postStub = sinon.stub()
 context = createContext 'models/post': 'stubmodels/post'
 define 'stubmodels/post', [], -> postStub
 
-context ['backbone', '../specs/fixtures/post', '../specs/helpers/helpers', 'collections/posts'], (Backbone, PostFixtures, Helpers, Posts) ->
+context ['backbone', '../specs/ui/fixtures/post', '../specs/ui/helpers/helpers', 'collections/posts'], (Backbone, PostFixtures, Helpers, Posts) ->
   describe 'Posts collection', ->
     beforeEach ->
       @post1 = new Backbone.Model PostFixtures.valid[0]

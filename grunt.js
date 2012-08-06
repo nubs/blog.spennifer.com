@@ -15,26 +15,26 @@ module.exports = function(grunt) {
           'build/scripts/views/post.js': 'scripts/views/post.coffee'
         }
       },
-      specs: {
+      uispecs: {
         options: {
           bare: false
         },
         files: {
-          'build/specs/helpers/helpers.js': 'specs/helpers/helpers.coffee',
-          'build/specs/fixtures/post.js': 'specs/fixtures/post.coffee',
-          'build/specs/models/post.spec.js': 'specs/models/post.spec.coffee',
-          'build/specs/collections/posts.spec.js': 'specs/collections/posts.spec.coffee',
-          'build/specs/routers/routes.spec.js': 'specs/routers/routes.spec.coffee',
-          'build/specs/routers/routers.spec.js': 'specs/routers/routers.spec.coffee',
-          'build/specs/views/posts.spec.js': 'specs/views/posts.spec.coffee',
-          'build/specs/views/post.spec.js': 'specs/views/post.spec.coffee'
+          'build/specs/ui/helpers/helpers.js': 'specs/ui/helpers/helpers.coffee',
+          'build/specs/ui/fixtures/post.js': 'specs/ui/fixtures/post.coffee',
+          'build/specs/ui/models/post.spec.js': 'specs/ui/models/post.spec.coffee',
+          'build/specs/ui/collections/posts.spec.js': 'specs/ui/collections/posts.spec.coffee',
+          'build/specs/ui/routers/routes.spec.js': 'specs/ui/routers/routes.spec.coffee',
+          'build/specs/ui/routers/routers.spec.js': 'specs/ui/routers/routers.spec.coffee',
+          'build/specs/ui/views/posts.spec.js': 'specs/ui/views/posts.spec.coffee',
+          'build/specs/ui/views/post.spec.js': 'specs/ui/views/post.spec.coffee'
         }
       }
     },
     copy: {
       specrunner: {
         files: {
-          'build/specs': 'specs/*'
+          'build/specs/ui': 'specs/ui/*'
         }
       },
       templates: {
@@ -78,7 +78,7 @@ module.exports = function(grunt) {
       tasks: 'default'
     },
     jasmine: {
-      index: ['build/specs/index.html']
+      index: ['build/specs/ui/index.html']
     }
   });
 

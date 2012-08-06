@@ -3,18 +3,18 @@
   <head>
     <meta charset="utf-8" />
     <title>The Rinehart Reader Specs</title>
-    <link rel="stylesheet" type="text/css" href="../vendor/jasmine/jasmine.css" />
-    <script type="text/javascript" src="../vendor/requirejs/require.js"></script>
-    <script type="text/javascript" src="../vendor/jasmine/jasmine.js"></script>
-    <script type="text/javascript" src="../vendor/jasmine/jasmine-html.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../vendor/jasmine/jasmine.css" />
+    <script type="text/javascript" src="../../vendor/requirejs/require.js"></script>
+    <script type="text/javascript" src="../../vendor/jasmine/jasmine.js"></script>
+    <script type="text/javascript" src="../../vendor/jasmine/jasmine-html.js"></script>
     <script type="text/javascript" src="http://sinonjs.org/releases/sinon.js"></script>
-    <script type="text/javascript" src="../vendor/jasmine-sinon/jasmine-sinon.js"></script>
-    <script type="text/javascript" src="../vendor/jasmine-jquery/jasmine-jquery.js"></script>
+    <script type="text/javascript" src="../../vendor/jasmine-sinon/jasmine-sinon.js"></script>
+    <script type="text/javascript" src="../../vendor/jasmine-jquery/jasmine-jquery.js"></script>
   </head>
   <body>
     <script type="text/javascript">
       var requireConfig = {
-        baseUrl: '../scripts',
+        baseUrl: '../../scripts',
         shim: {
           underscore: {exports: '_'},
           backbone: {deps: ['underscore', 'jquery'], exports: 'Backbone'},
@@ -38,7 +38,7 @@
         return require.config(contextConfig);
       }
 
-      require(['../specs/models/post.spec', '../specs/collections/posts.spec', '../specs/routers/routes.spec', '../specs/routers/routers.spec', '../specs/views/posts.spec', '../specs/views/post.spec'], function() {
+      require(['../specs/ui/models/post.spec', '../specs/ui/collections/posts.spec', '../specs/ui/routers/routes.spec', '../specs/ui/routers/routers.spec', '../specs/ui/views/posts.spec', '../specs/ui/views/post.spec'], function() {
         jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
         jasmine.getEnv().execute();
       });
