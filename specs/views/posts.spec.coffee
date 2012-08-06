@@ -17,6 +17,10 @@ context ['views/posts'], (PostsView) ->
     describe 'when rendered', ->
       beforeEach ->
         @postView = new Backbone.View
+        @postView.render = ->
+          @el = document.createElement 'li'
+          this
+        @postViewRenderSpy = sinon.spy @postView, 'render'
         postViewStub.returns @postView
         @post1 = new Backbone.Model id: 1
         @post2 = new Backbone.Model id: 2
@@ -28,3 +32,9 @@ context ['views/posts'], (PostsView) ->
         expect(postViewStub).toHaveBeenCalledWith model: @post1
         expect(postViewStub).toHaveBeenCalledWith model: @post2
         expect(postViewStub).toHaveBeenCalledWith model: @post3
+
+      it 'should render each post view', ->
+        expect(@postViewRenderSpy).toHaveBeenCalledThrice()
+
+      it 'should append each post to the list', ->
+        expect(@view.$el.children().length).toEqual 3
