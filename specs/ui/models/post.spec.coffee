@@ -1,6 +1,7 @@
-define ['models/post', '../fixtures/post', '../helpers/helpers'], (Post, PostFixtures, Helpers) ->
+define ['models/post', '../fixtures/post', '../helpers/helpers'], (PostLoader, PostFixtures, Helpers) ->
   describe 'Post model', ->
     beforeEach ->
+      Post = new PostLoader
       @post = new Post title: PostFixtures.valid[0].title
       @post.collection = url: '/collection'
 

@@ -1,6 +1,15 @@
-define ['routers/router'], (Router) ->
+define ['routers/router'], (RouterLoader) ->
   describe 'Routes', ->
     beforeEach ->
+      @collection = new Backbone.Collection
+      @fetchStub = sinon.stub(@collection, 'fetch').returns null
+      @postsStub = sinon.stub().returns @collection
+      @postsViewStub = sinon.stub()
+
+      @postStub = sinon.stub()
+      @postViewStub = sinon.stub()
+
+      Router = new RouterLoader @postsStub, @postsViewStub, @postStub, @postViewStub
       @router = new Router
       @routeSpy = sinon.spy()
       try Backbone.history.start silent: true

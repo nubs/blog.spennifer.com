@@ -13,7 +13,7 @@
   </head>
   <body>
     <script type="text/javascript">
-      var requireConfig = {
+      require.config({
         baseUrl: '../../scripts',
         shim: {
           underscore: {exports: '_'},
@@ -27,16 +27,7 @@
           handlebars: 'http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0.beta6/handlebars.min',
           text: '../vendor/requirejs-text/text'
         }
-      };
-      require.config(requireConfig);
-
-      function createContext(map) {
-        var contextConfig = requireConfig;
-        contextConfig.context = Math.floor(Math.random() * 1000000);
-        contextConfig.map = {'*': map};
-
-        return require.config(contextConfig);
-      }
+      });
 
       require(['../specs/ui/models/post.spec', '../specs/ui/collections/posts.spec', '../specs/ui/routers/routes.spec', '../specs/ui/routers/routers.spec', '../specs/ui/views/posts.spec', '../specs/ui/views/post.spec'], function() {
         jasmine.getEnv().addReporter(new jasmine.TrivialReporter());

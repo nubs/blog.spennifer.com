@@ -1,6 +1,7 @@
-define ['views/post'], (PostView) ->
+define ['views/post'], (PostViewLoader) ->
   describe 'Post view', ->
     beforeEach ->
+      PostView = new PostViewLoader
       @model = new Backbone.Model
         id: 1
         title: 'A blog post'
@@ -14,6 +15,7 @@ define ['views/post'], (PostView) ->
     describe 'when rendered', ->
       beforeEach ->
         @renderResult = @view.render()
+
       it 'should return the view object', ->
         expect(@renderResult).toEqual @view
 

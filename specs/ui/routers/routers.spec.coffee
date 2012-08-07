@@ -1,31 +1,29 @@
-postsStub = sinon.stub()
-postsViewStub = sinon.stub()
-postStub = sinon.stub()
-postViewStub = sinon.stub()
-context = createContext 'views/posts': 'stubviews/posts', 'collections/posts': 'stubcollections/posts', 'views/post': 'stubviews/post', 'models/post': 'stubmodels/post'
-define 'stubviews/posts', [], -> postsViewStub
-define 'stubcollections/posts', [], -> postsStub
-define 'stubviews/post', [], -> postViewStub
-define 'stubmodels/post', [], -> postStub
-
-context ['backbone', 'routers/router'], (Backbone, Router) ->
+define ['backbone', 'routers/router'], (Backbone, RouterLoader) ->
   describe 'Router', ->
     beforeEach ->
+      @collection = new Backbone.Collection
+      @fetchStub = sinon.stub(@collection, 'fetch').returns null
+      @postsStub = sinon.stub().returns @collection
+      @postsViewStub = sinon.stub().returns new Backbone.View
+
+      @post = new Backbone.Model
+      @postStub = sinon.stub().returns @post
+      @postViewStub = sinon.stub().returns new Backbone.View
+
+      Router = new RouterLoader @postsStub, @postsViewStub, @postStub, @postViewStub
       @router = new Router
 
     describe 'Index handler', ->
       beforeEach ->
-        @collection = new Backbone.Collection
-        @fetchStub = sinon.stub(@collection, 'fetch').returns null
-        postsStub.returns @collection
-        postsViewStub.returns new Backbone.View
         @router.index()
 
       it 'should create a posts collection', ->
-        expect(postsStub).toHaveBeenCalledWith()
+        expect(@postsStub).toHaveBeenCalledOnce()
+        expect(@postsStub).toHaveBeenCalledWith()
 
       it 'should create a posts view', ->
-        expect(postsViewStub).toHaveBeenCalledWith collection: @collection
+        expect(@postsViewStub).toHaveBeenCalledOnce()
+        expect(@postsViewStub).toHaveBeenCalledWith collection: @collection
 
       it 'shoud fetch the posts collection from the server', ->
         expect(@fetchStub).toHaveBeenCalledOnce()
@@ -33,13 +31,12 @@ context ['backbone', 'routers/router'], (Backbone, Router) ->
 
     describe 'Post detail handler', ->
       beforeEach ->
-        @post = new Backbone.Model
-        postStub.returns @post
-        postViewStub.returns new Backbone.View
         @router.post '1'
 
       it 'should create a post model', ->
-        expect(postStub).toHaveBeenCalledWith id: '1'
+        expect(@postStub).toHaveBeenCalledOnce()
+        expect(@postStub).toHaveBeenCalledWith id: '1'
 
       it 'should create a post view', ->
-        expect(postViewStub).toHaveBeenCalledWith model: @post
+        expect(@postViewStub).toHaveBeenCalledOnce()
+        expect(@postViewStub).toHaveBeenCalledWith model: @post

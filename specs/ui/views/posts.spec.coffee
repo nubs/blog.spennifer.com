@@ -1,10 +1,8 @@
-postViewStub = sinon.stub()
-context = createContext 'views/post': 'stubviews/post'
-define 'stubviews/post', [], -> postViewStub
-
-context ['views/posts'], (PostsView) ->
+define ['views/posts'], (PostsViewLoader) ->
   describe 'Posts view', ->
     beforeEach ->
+      @postViewStub = sinon.stub()
+      PostsView = new PostsViewLoader @postViewStub
       @view = new PostsView
 
     describe 'when instantiated', ->
@@ -21,7 +19,7 @@ context ['views/posts'], (PostsView) ->
           @el = document.createElement 'li'
           this
         @postViewRenderSpy = sinon.spy @postView, 'render'
-        postViewStub.returns @postView
+        @postViewStub.returns @postView
         @post1 = new Backbone.Model id: 1
         @post2 = new Backbone.Model id: 2
         @post3 = new Backbone.Model id: 3
@@ -29,9 +27,10 @@ context ['views/posts'], (PostsView) ->
         @view.render()
 
       it 'should create a post view for each item in the collection', ->
-        expect(postViewStub).toHaveBeenCalledWith model: @post1
-        expect(postViewStub).toHaveBeenCalledWith model: @post2
-        expect(postViewStub).toHaveBeenCalledWith model: @post3
+        expect(@postViewStub).toHaveBeenCalledThrice()
+        expect(@postViewStub).toHaveBeenCalledWith model: @post1
+        expect(@postViewStub).toHaveBeenCalledWith model: @post2
+        expect(@postViewStub).toHaveBeenCalledWith model: @post3
 
       it 'should render each post view', ->
         expect(@postViewRenderSpy).toHaveBeenCalledThrice()

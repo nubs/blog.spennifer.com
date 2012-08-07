@@ -1,17 +1,11 @@
-# This stub is unfortunately global to this spec.  I can't find a way to keep
-# that from being the case.  The models/post module needs to be defined before
-# the collections/post module is loaded, and putting it first means that the
-# stub has to be global.
-postStub = sinon.stub()
-context = createContext 'models/post': 'stubmodels/post'
-define 'stubmodels/post', [], -> postStub
-
-context ['backbone', '../specs/ui/fixtures/post', '../specs/ui/helpers/helpers', 'collections/posts'], (Backbone, PostFixtures, Helpers, Posts) ->
+define ['backbone', '../fixtures/post', '../helpers/helpers', 'collections/posts'], (Backbone, PostFixtures, Helpers, PostsLoader) ->
   describe 'Posts collection', ->
     beforeEach ->
       @post1 = new Backbone.Model PostFixtures.valid[0]
-      postStub.returns @post1
-      @posts = new Posts()
+      @postStub = sinon.stub()
+      @postStub.returns @post1
+      Posts = new PostsLoader @postStub
+      @posts = new Posts
 
     describe 'when instantiated with a model literal', ->
       beforeEach ->
@@ -22,7 +16,8 @@ context ['backbone', '../specs/ui/fixtures/post', '../specs/ui/helpers/helpers',
         expect(@posts.get 1).toEqual @post1
 
       it 'should have called the model constructor', ->
-        expect(postStub).toHaveBeenCalledWith PostFixtures.valid[0]
+        expect(@postStub).toHaveBeenCalledOnce()
+        expect(@postStub).toHaveBeenCalledWith PostFixtures.valid[0]
 
     describe 'when fetching from server', ->
       beforeEach ->
