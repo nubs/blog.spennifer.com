@@ -15,6 +15,14 @@ module.exports = function(grunt) {
           'build/scripts/views/post.js': 'scripts/views/post.coffee'
         }
       },
+      api: {
+        options: {
+          bare: false
+        },
+        files: {
+          'build/api/models/post.js': 'api/models/post.coffee'
+        }
+      },
       uispecs: {
         options: {
           bare: false
@@ -28,6 +36,14 @@ module.exports = function(grunt) {
           'build/specs/ui/routers/routers.spec.js': 'specs/ui/routers/routers.spec.coffee',
           'build/specs/ui/views/posts.spec.js': 'specs/ui/views/posts.spec.coffee',
           'build/specs/ui/views/post.spec.js': 'specs/ui/views/post.spec.coffee'
+        }
+      },
+      apispecs: {
+        options: {
+          bare: false
+        },
+        files: {
+          'build/specs/api/models/post.spec.js': 'specs/api/models/post.spec.coffee'
         }
       }
     },
@@ -79,13 +95,17 @@ module.exports = function(grunt) {
     },
     jasmine: {
       index: ['build/specs/ui/index.html']
+    },
+    jasmine_node: {
+      specs: 'build/specs/api'
     }
   });
 
   grunt.loadTasks('tasks');
   grunt.loadNpmTasks('grunt-jasmine-task');
+  grunt.loadNpmTasks('grunt-jasmine-node-task');
   grunt.loadNpmTasks('grunt-contrib');
 
-  grunt.registerTask('default', 'copy coffee');
-  grunt.registerTask('travis', 'copy coffee jasmine');
+  grunt.registerTask('default', 'copy coffee jasmine_node');
+  grunt.registerTask('travis', 'copy coffee jasmine jasmine_node');
 };
