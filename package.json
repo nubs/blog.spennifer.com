@@ -7,8 +7,10 @@
   "directories": {"pages": "./pages"},
   "dependencies": {
     "grunt": ">=0.3.11",
-    "grunt-jasmine-task": ">=0.2.1",
     "grunt-contrib": ">=0.1.3"
+  },
+  "devDependencies": {
+    "grunt-jasmine-task": ">=0.2.1"
   },
   "scripts": {
     "test": "grunt travis --verbose"
