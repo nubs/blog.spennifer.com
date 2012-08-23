@@ -12,7 +12,8 @@ module.exports = function(grunt) {
           'build/scripts/collections/posts.js': 'scripts/collections/posts.coffee',
           'build/scripts/routers/router.js': 'scripts/routers/router.coffee',
           'build/scripts/views/posts.js': 'scripts/views/posts.coffee',
-          'build/scripts/views/post.js': 'scripts/views/post.coffee'
+          'build/scripts/views/post.js': 'scripts/views/post.coffee',
+          'build/index.js': 'index.coffee'
         }
       },
       api: {
@@ -20,7 +21,8 @@ module.exports = function(grunt) {
           bare: false
         },
         files: {
-          'build/api/models/post.js': 'api/models/post.coffee'
+          'build/api/models/post.js': 'api/models/post.coffee',
+          'build/api/index.js': 'api/index.coffee'
         }
       },
       uispecs: {
