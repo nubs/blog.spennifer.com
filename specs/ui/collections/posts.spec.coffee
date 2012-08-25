@@ -22,7 +22,7 @@ define ['backbone', '../fixtures/post', '../helpers/helpers', 'collections/posts
     describe 'when fetching from server', ->
       beforeEach ->
         @server = sinon.fakeServer.create()
-        @server.respondWith 'GET', '/posts', Helpers.validResponse PostFixtures.valid
+        @server.respondWith 'GET', '/api/posts', Helpers.validResponse PostFixtures.valid
 
       afterEach -> @server.restore()
 
@@ -30,7 +30,7 @@ define ['backbone', '../fixtures/post', '../helpers/helpers', 'collections/posts
         @posts.fetch()
         expect(@server.requests.length).toEqual 1
         expect(@server.requests[0].method).toEqual 'GET'
-        expect(@server.requests[0].url).toEqual '/posts'
+        expect(@server.requests[0].url).toEqual '/api/posts'
 
       it 'should parse the posts from the response', ->
         @posts.fetch()
