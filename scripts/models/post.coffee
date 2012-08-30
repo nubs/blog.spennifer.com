@@ -2,7 +2,8 @@ define ['backbone'], (Backbone) ->
   () ->
     Post = Backbone.Model.extend
       idAttribute: '_id'
-      urlRoot: '/api/posts'
+      url: ->
+        if @isNew() then '/api/posts' else '/api/posts/' + @get 'title'
       defaults:
         published: false
       validate: (attributes) ->

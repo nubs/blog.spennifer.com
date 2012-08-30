@@ -3,11 +3,11 @@ define ['backbone'], (Backbone) ->
     Router = Backbone.Router.extend
       routes:
         '': 'index'
-        'posts/:id': 'post'
+        'posts/:title': 'post'
       index: ->
         @posts = new Posts
         @postsView = new PostsView collection: @posts
         @posts.fetch()
-      post: (id) ->
-        @post = new Post id: id
+      post: (title) ->
+        @post = new Post title: title
         @postView = new PostView model: @post

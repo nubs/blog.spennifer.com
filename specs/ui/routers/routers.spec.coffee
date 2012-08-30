@@ -31,11 +31,11 @@ define ['backbone', 'routers/router'], (Backbone, RouterLoader) ->
 
     describe 'Post detail handler', ->
       beforeEach ->
-        @router.post '1'
+        @router.post 'Test title'
 
       it 'should create a post model', ->
         expect(@postStub).toHaveBeenCalledOnce()
-        expect(@postStub).toHaveBeenCalledWith id: '1'
+        expect(@postStub).toHaveBeenCalledWith title: 'Test title'
 
       it 'should create a post view', ->
         expect(@postViewStub).toHaveBeenCalledOnce()
