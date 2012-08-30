@@ -12,6 +12,9 @@ define ['models/post', '../fixtures/post', '../helpers/helpers'], (PostLoader, P
       it 'should not be published', ->
         expect(@post.get 'published').toBe false
 
+      it 'should use mongo ids', ->
+        expect(@post.idAttribute).toBe '_id'
+
     describe 'when saving', ->
       beforeEach ->
         @server = sinon.fakeServer.create()

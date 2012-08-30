@@ -1,6 +1,7 @@
 define ['backbone'], (Backbone) ->
   () ->
     Post = Backbone.Model.extend
+      idAttribute: '_id'
       defaults:
         published: false
       validate: (attributes) ->
