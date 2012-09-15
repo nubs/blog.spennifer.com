@@ -2,8 +2,12 @@ define ['views/posts'], (PostsViewLoader) ->
   describe 'Posts view', ->
     beforeEach ->
       @postViewStub = sinon.stub()
+      @post1 = new Backbone.Model id: 1
+      @post2 = new Backbone.Model id: 2
+      @post3 = new Backbone.Model id: 3
+
       PostsView = new PostsViewLoader @postViewStub
-      @view = new PostsView
+      @view = new PostsView collection: new Backbone.Collection [@post1, @post2, @post3]
 
     describe 'when instantiated', ->
       it 'should create a list element', ->
@@ -20,10 +24,6 @@ define ['views/posts'], (PostsViewLoader) ->
           this
         @postViewRenderSpy = sinon.spy @postView, 'render'
         @postViewStub.returns @postView
-        @post1 = new Backbone.Model id: 1
-        @post2 = new Backbone.Model id: 2
-        @post3 = new Backbone.Model id: 3
-        @view.collection = new Backbone.Collection [@post1, @post2, @post3]
         @view.render()
 
       it 'should create a post view for each item in the collection', ->
