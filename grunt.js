@@ -103,7 +103,6 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.loadTasks('tasks');
   grunt.loadNpmTasks('grunt-jasmine-task');
   grunt.loadNpmTasks('grunt-jasmine-node-task');
   grunt.loadNpmTasks('grunt-contrib');
