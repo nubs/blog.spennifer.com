@@ -1,4 +1,4 @@
-define ['backbone'], (Backbone) ->
+define ['underscore', 'backbone'], (_, Backbone) ->
   (PostView) ->
     PostsView = Backbone.View.extend
       tagName: 'ul'
