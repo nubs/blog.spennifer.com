@@ -4,7 +4,8 @@ define ['underscore', 'backbone'], (_, Backbone) ->
       tagName: 'ul'
       className: 'posts'
       initialize: ->
-        _.bindAll this, 'addPost'
+        _.bindAll this, 'addPost', 'render'
+        @collection.on 'reset', @render
       render: ->
         @collection.each @addPost
       addPost: (post) ->
