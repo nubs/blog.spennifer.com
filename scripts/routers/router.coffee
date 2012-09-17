@@ -11,3 +11,4 @@ define ['backbone'], (Backbone) ->
       post: (title) ->
         @post = new Post title: title
         @postView = new PostView model: @post
+        @post.fetch()

@@ -2,11 +2,12 @@ define ['backbone', 'routers/router'], (Backbone, RouterLoader) ->
   describe 'Router', ->
     beforeEach ->
       @collection = new Backbone.Collection
-      @fetchStub = sinon.stub(@collection, 'fetch').returns null
+      @collectionFetchStub = sinon.stub(@collection, 'fetch').returns null
       @postsStub = sinon.stub().returns @collection
       @postsViewStub = sinon.stub().returns new Backbone.View
 
       @post = new Backbone.Model
+      @postFetchStub = sinon.stub(@post, 'fetch').returns null
       @postStub = sinon.stub().returns @post
       @postViewStub = sinon.stub().returns new Backbone.View
 
@@ -26,8 +27,8 @@ define ['backbone', 'routers/router'], (Backbone, RouterLoader) ->
         expect(@postsViewStub).toHaveBeenCalledWith collection: @collection
 
       it 'shoud fetch the posts collection from the server', ->
-        expect(@fetchStub).toHaveBeenCalledOnce()
-        expect(@fetchStub).toHaveBeenCalledWith()
+        expect(@collectionFetchStub).toHaveBeenCalledOnce()
+        expect(@collectionFetchStub).toHaveBeenCalledWith()
 
     describe 'Post detail handler', ->
       beforeEach ->
@@ -40,3 +41,7 @@ define ['backbone', 'routers/router'], (Backbone, RouterLoader) ->
       it 'should create a post view', ->
         expect(@postViewStub).toHaveBeenCalledOnce()
         expect(@postViewStub).toHaveBeenCalledWith model: @post
+
+      it 'shoud fetch the post from the server', ->
+        expect(@postFetchStub).toHaveBeenCalledOnce()
+        expect(@postFetchStub).toHaveBeenCalledWith()

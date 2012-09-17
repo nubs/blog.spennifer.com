@@ -2,11 +2,13 @@ define ['routers/router'], (RouterLoader) ->
   describe 'Routes', ->
     beforeEach ->
       @collection = new Backbone.Collection
-      @fetchStub = sinon.stub(@collection, 'fetch').returns null
+      collectionFetchStub = sinon.stub(@collection, 'fetch').returns null
       @postsStub = sinon.stub().returns @collection
       @postsViewStub = sinon.stub()
 
-      @postStub = sinon.stub()
+      @post = new Backbone.Model
+      postFetchStub = sinon.stub(@post, 'fetch').returns null
+      @postStub = sinon.stub().returns @post
       @postViewStub = sinon.stub()
 
       Router = new RouterLoader @postsStub, @postsViewStub, @postStub, @postViewStub
