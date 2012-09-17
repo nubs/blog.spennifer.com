@@ -52,42 +52,42 @@ module.exports = function(grunt) {
     copy: {
       specrunner: {
         files: {
-          'build/specs/ui': 'specs/ui/*'
+          'build/specs/ui/': 'specs/ui/*'
         }
       },
       templates: {
         files: {
-          'build/scripts/templates': 'scripts/templates/*'
+          'build/scripts/templates/': 'scripts/templates/*'
         }
       },
       jasmine: {
         files: {
-          'build/vendor/jasmine': 'vendor/jasmine/lib/jasmine-core/*'
+          'build/vendor/jasmine/': 'vendor/jasmine/lib/jasmine-core/*'
         }
       },
       jasmineSinon: {
         files: {
-          'build/vendor/jasmine-sinon': 'vendor/jasmine-sinon/lib/jasmine-sinon.js'
+          'build/vendor/jasmine-sinon/': 'vendor/jasmine-sinon/lib/jasmine-sinon.js'
         }
       },
       jasmineJquery: {
         files: {
-          'build/vendor/jasmine-jquery': 'vendor/jasmine-jquery/lib/jasmine-jquery.js'
+          'build/vendor/jasmine-jquery/': 'vendor/jasmine-jquery/lib/jasmine-jquery.js'
         }
       },
       requirejs: {
         files: {
-          'build/vendor/requirejs': 'vendor/requirejs/require.js'
+          'build/vendor/requirejs/': 'vendor/requirejs/require.js'
         }
       },
       requirejsText: {
         files: {
-          'build/vendor/requirejs-text': 'vendor/requirejs-text/text.js'
+          'build/vendor/requirejs-text/': 'vendor/requirejs-text/text.js'
         }
       },
       sinonjs: {
         files: {
-          'build/vendor/sinonjs': 'vendor/sinonjs/sinon.js'
+          'build/vendor/sinonjs/': 'vendor/sinonjs/sinon.js'
         }
       }
     },
