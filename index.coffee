@@ -13,4 +13,6 @@ app.use '/vendor', express.static __dirname + '/vendor'
 app.use '/scripts', express.static __dirname + '/scripts'
 app.use '/specs', express.static __dirname + '/specs'
 
-app.listen 8000
+port = process.env.PORT ? 8000
+app.listen port, ->
+    console.log 'Listening on ' + port
