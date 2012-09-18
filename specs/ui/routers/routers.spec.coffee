@@ -1,18 +1,19 @@
-define ['backbone', 'routers/router'], (Backbone, RouterLoader) ->
+define ['jquery', 'backbone', 'routers/router'], ($, Backbone, RouterLoader) ->
   describe 'Router', ->
     beforeEach ->
       @collection = new Backbone.Collection
       @collectionFetchStub = sinon.stub(@collection, 'fetch').returns null
       @postsStub = sinon.stub().returns @collection
-      @postsViewStub = sinon.stub().returns new Backbone.View
+      @postsViewStub = sinon.stub().returns new Backbone.View tagName: 'b'
 
       @post = new Backbone.Model
       @postFetchStub = sinon.stub(@post, 'fetch').returns null
       @postStub = sinon.stub().returns @post
-      @postViewStub = sinon.stub().returns new Backbone.View
+      @postViewStub = sinon.stub().returns new Backbone.View tagName: 'hr'
 
       Router = new RouterLoader @postsStub, @postsViewStub, @postStub, @postViewStub
-      @router = new Router
+      @appEl = $ '<div>'
+      @router = new Router appEl: @appEl
 
     describe 'Index handler', ->
       beforeEach ->
@@ -30,6 +31,9 @@ define ['backbone', 'routers/router'], (Backbone, RouterLoader) ->
         expect(@collectionFetchStub).toHaveBeenCalledOnce()
         expect(@collectionFetchStub).toHaveBeenCalledWith()
 
+      it 'should add the posts view to the application element.', ->
+        expect(@appEl).toContain 'b'
+
     describe 'Post detail handler', ->
       beforeEach ->
         @router.post 'Test title'
@@ -45,3 +49,6 @@ define ['backbone', 'routers/router'], (Backbone, RouterLoader) ->
       it 'shoud fetch the post from the server', ->
         expect(@postFetchStub).toHaveBeenCalledOnce()
         expect(@postFetchStub).toHaveBeenCalledWith()
+
+      it 'should add the post view to the application element.', ->
+        expect(@appEl).toContain 'hr'

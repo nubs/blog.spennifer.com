@@ -1,4 +1,4 @@
-define ['routers/router'], (RouterLoader) ->
+define ['jquery', 'routers/router'], ($, RouterLoader) ->
   describe 'Routes', ->
     beforeEach ->
       @collection = new Backbone.Collection
@@ -12,7 +12,8 @@ define ['routers/router'], (RouterLoader) ->
       @postViewStub = sinon.stub()
 
       Router = new RouterLoader @postsStub, @postsViewStub, @postStub, @postViewStub
-      @router = new Router
+      @appEl = $ '<div>'
+      @router = new Router appEl: @appEl
       @routeSpy = sinon.spy()
       try Backbone.history.start silent: true
 
