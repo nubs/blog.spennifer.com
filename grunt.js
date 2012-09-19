@@ -87,7 +87,7 @@ module.exports = function(grunt) {
       },
       sinonjs: {
         files: {
-          'build/vendor/sinonjs/': 'vendor/sinonjs/sinon.js'
+          'build/vendor/sinonjs/': 'node_modules/sinon/lib/sinon.js'
         }
       }
     },
