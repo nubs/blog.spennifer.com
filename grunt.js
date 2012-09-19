@@ -13,6 +13,7 @@ module.exports = function(grunt) {
           'build/scripts/routers/router.js': 'scripts/routers/router.coffee',
           'build/scripts/views/posts.js': 'scripts/views/posts.coffee',
           'build/scripts/views/post.js': 'scripts/views/post.coffee',
+          'build/scripts/main.js': 'scripts/main.coffee',
           'build/index.js': 'index.coffee'
         }
       },
@@ -53,6 +54,11 @@ module.exports = function(grunt) {
       specrunner: {
         files: {
           'build/specs/ui/': 'specs/ui/*'
+        }
+      },
+      public: {
+        files: {
+          'build/public/': 'public/*'
         }
       },
       templates: {
