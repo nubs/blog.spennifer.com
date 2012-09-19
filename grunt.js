@@ -23,6 +23,7 @@ module.exports = function(grunt) {
         },
         files: {
           'build/api/models/post.js': 'api/models/post.coffee',
+          'build/api/post.js': 'api/post.coffee',
           'build/api/index.js': 'api/index.coffee'
         }
       },
