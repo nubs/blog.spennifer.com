@@ -9,8 +9,8 @@ module.exports = (mongoose) ->
     Post.find (err, posts) ->
       res.send posts
 
-  api.get '/posts/:title', (req, res) ->
-    Post.findOne title: req.params.title, (err, post) ->
+  api.get '/posts/:id', (req, res) ->
+    Post.findOne _id: req.params.id, (err, post) ->
       res.send post
 
   api.post '/posts', (req, res) ->

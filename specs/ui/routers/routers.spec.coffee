@@ -36,11 +36,11 @@ define ['jquery', 'backbone', 'routers/router'], ($, Backbone, RouterLoader) ->
 
     describe 'Post detail handler', ->
       beforeEach ->
-        @router.post 'Test title'
+        @router.post '1'
 
       it 'should create a post model', ->
         expect(@postStub).toHaveBeenCalledOnce()
-        expect(@postStub).toHaveBeenCalledWith title: 'Test title'
+        expect(@postStub).toHaveBeenCalledWith _id: '1'
 
       it 'should create a post view', ->
         expect(@postViewStub).toHaveBeenCalledOnce()

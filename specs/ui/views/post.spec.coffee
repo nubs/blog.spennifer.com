@@ -3,7 +3,7 @@ define ['views/post'], (PostViewLoader) ->
     beforeEach ->
       PostView = new PostViewLoader
       @model = new Backbone.Model
-        id: 1
+        _id: 1
         title: 'A blog post'
         published: false
       @view = new PostView model: @model

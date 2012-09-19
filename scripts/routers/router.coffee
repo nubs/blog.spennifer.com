@@ -5,14 +5,14 @@ define ['backbone'], (Backbone) ->
         @appEl = options.appEl
       routes:
         '': 'index'
-        'posts/:title': 'post'
+        'posts/:id': 'post'
       index: ->
         @posts = new Posts
         @postsView = new PostsView collection: @posts
         @appEl.html @postsView.el
         @posts.fetch()
-      post: (title) ->
-        @post = new Post title: title
+      post: (id) ->
+        @post = new Post _id: id
         @postView = new PostView model: @post
         @appEl.html @postView.el
         @post.fetch()
