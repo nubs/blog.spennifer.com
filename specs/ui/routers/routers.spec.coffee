@@ -25,7 +25,7 @@ define ['jquery', 'backbone', 'routers/router'], ($, Backbone, RouterLoader) ->
 
       it 'should create a posts view', ->
         expect(@postsViewStub).toHaveBeenCalledOnce()
-        expect(@postsViewStub).toHaveBeenCalledWith collection: @collection
+        expect(@postsViewStub).toHaveBeenCalledWith collection: @collection, app: @router
 
       it 'shoud fetch the posts collection from the server', ->
         expect(@collectionFetchStub).toHaveBeenCalledOnce()
@@ -44,7 +44,7 @@ define ['jquery', 'backbone', 'routers/router'], ($, Backbone, RouterLoader) ->
 
       it 'should create a post view', ->
         expect(@postViewStub).toHaveBeenCalledOnce()
-        expect(@postViewStub).toHaveBeenCalledWith model: @post
+        expect(@postViewStub).toHaveBeenCalledWith model: @post, app: @router
 
       it 'shoud fetch the post from the server', ->
         expect(@postFetchStub).toHaveBeenCalledOnce()

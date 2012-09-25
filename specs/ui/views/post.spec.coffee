@@ -23,7 +23,7 @@ define ['views/post'], (PostViewLoader) ->
         expect(@view.$el).toContain 'a h2'
 
       it 'should have the correct URL', ->
-        expect(@view.$('a').attr 'href').toEqual '#posts/1'
+        expect(@view.$('a').attr 'href').toEqual '/posts/1'
 
       it 'should have the correct title text', ->
         expect(@view.$ 'h2').toHaveText 'A blog post'

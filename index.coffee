@@ -13,6 +13,9 @@ app.use '/vendor', express.static __dirname + '/vendor'
 app.use '/scripts', express.static __dirname + '/scripts'
 app.use '/specs', express.static __dirname + '/specs'
 
+app.get '*', (req, res) ->
+  res.sendfile __dirname + '/public/index.html'
+
 port = process.env.PORT ? 8000
 app.listen port, ->
     console.log 'Listening on ' + port

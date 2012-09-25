@@ -9,5 +9,7 @@ define ['underscore', 'backbone'], (_, Backbone) ->
       render: ->
         @collection.each @addPost
       addPost: (post) ->
-        view = new PostView model: post
+        view = new PostView
+          model: post
+          app: @options.app
         @$el.append view.render().el

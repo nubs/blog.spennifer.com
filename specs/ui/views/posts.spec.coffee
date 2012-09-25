@@ -7,7 +7,7 @@ define ['views/posts'], (PostsViewLoader) ->
       @post3 = new Backbone.Model id: 3
 
       PostsView = new PostsViewLoader @postViewStub
-      @view = new PostsView collection: new Backbone.Collection [@post1, @post2, @post3]
+      @view = new PostsView app: 'app', collection: new Backbone.Collection [@post1, @post2, @post3]
 
     describe 'when instantiated', ->
       it 'should create a list element', ->
@@ -28,9 +28,9 @@ define ['views/posts'], (PostsViewLoader) ->
 
       it 'should create a post view for each item in the collection', ->
         expect(@postViewStub).toHaveBeenCalledThrice()
-        expect(@postViewStub).toHaveBeenCalledWith model: @post1
-        expect(@postViewStub).toHaveBeenCalledWith model: @post2
-        expect(@postViewStub).toHaveBeenCalledWith model: @post3
+        expect(@postViewStub).toHaveBeenCalledWith model: @post1, app: 'app'
+        expect(@postViewStub).toHaveBeenCalledWith model: @post2, app: 'app'
+        expect(@postViewStub).toHaveBeenCalledWith model: @post3, app: 'app'
 
       it 'should render each post view', ->
         expect(@postViewRenderSpy).toHaveBeenCalledThrice()

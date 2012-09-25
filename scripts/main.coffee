@@ -22,4 +22,4 @@ require ['jquery', 'backbone', 'routers/router', 'collections/posts', 'views/pos
 
   Router = new RouterLoader Posts, PostsView, Post, PostView
   router = new Router appEl: $ '#app'
-  Backbone.history.start()
+  Backbone.history.start pushState: true
