@@ -59,7 +59,8 @@ module.exports = function(grunt) {
       },
       public: {
         files: {
-          'build/public/': 'public/*'
+          'build/public/': 'public/*',
+          'build/public/styles/': 'public/styles/*'
         }
       },
       templates: {

@@ -1,0 +1,29 @@
+@import url(http://fonts.googleapis.com/css?family=Merriweather:900);
+
+header {
+	background-color: #4f81bd;
+}
+
+header h1 {
+	text-transform: uppercase;
+	text-align: center;
+	font-family: 'Merriweather', serif;
+	color: #ffffff;
+	text-shadow: -1px 0 #054696, 0 1px #054696, 1px 0 #054696, 0 -1px #054696;
+	margin: 0;
+	font-size: 63px;
+	line-height: 70px;
+}
+
+body {
+	background-color: #f6f6f6;
+}
+
+#app, #leftSidebar, #rightSidebar {
+	background-color: #ffffff;
+	box-shadow:  0 0 10px #aaaaaa;
+}
+
+.container-fluid {
+	padding: 0;
+}

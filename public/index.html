@@ -2,11 +2,25 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Rinehart Reader</title>
     <script data-main="/scripts/main" src="/vendor/requirejs/require.js"></script>
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.no-icons.min.css" rel="stylesheet">
+    <link href="/styles/style.css" rel="stylesheet" />
   </head>
   <body>
-    <section id="app">
-    </section>
+    <header>
+      <h1>Rinehart Reader</h1>
+    </header>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div id="leftSidebar" class="span2">
+        </div>
+        <div id="app" class="span8">
+        </div>
+        <div id="rightSidebar" class="span2">
+        </div>
+      </div>
+    </div>
   </body>
 </html>

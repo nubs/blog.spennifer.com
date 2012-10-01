@@ -2,7 +2,7 @@ define ['underscore', 'backbone'], (_, Backbone) ->
   (PostView) ->
     PostsView = Backbone.View.extend
       tagName: 'ul'
-      className: 'posts'
+      className: 'posts unstyled'
       initialize: ->
         _.bindAll this, 'addPost', 'render'
         @collection.on 'reset', @render
