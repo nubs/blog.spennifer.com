@@ -6,6 +6,9 @@ module.exports = (mongoose) ->
     body:
       type: String
       required: true
+    teaser:
+      type: String
+      required: true
     published: Boolean
 
   Post = mongoose.model 'Post', postSchema

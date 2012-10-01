@@ -1,5 +1,5 @@
 define ['underscore', 'backbone'], (_, Backbone) ->
-  (PostView) ->
+  (PostTeaserView) ->
     PostsView = Backbone.View.extend
       tagName: 'ul'
       className: 'posts unstyled'
@@ -9,7 +9,7 @@ define ['underscore', 'backbone'], (_, Backbone) ->
       render: ->
         @collection.each @addPost
       addPost: (post) ->
-        view = new PostView
+        view = new PostTeaserView
           model: post
           app: @options.app
         @$el.append view.render().el

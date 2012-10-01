@@ -5,6 +5,7 @@ define ['models/post', '../fixtures/post', '../helpers/helpers'], (PostLoader, P
       @post = new Post
         title: PostFixtures.valid[0].title
         body: PostFixtures.valid[0].body
+        teaser: PostFixtures.valid[0].teaser
 
     describe 'when instantiated', ->
       it 'should exhibit attributes', ->
@@ -32,12 +33,18 @@ define ['models/post', '../fixtures/post', '../helpers/helpers'], (PostLoader, P
 
       it 'should fail when title is empty', ->
         @post.bind 'error', @eventSpy
-        @post.save title: '', body: 'body'
+        @post.save title: '', body: 'body', teaser: 'teaser'
         expect(@eventSpy).toHaveBeenCalledOnce()
         expect(@eventSpy).toHaveBeenCalledWith @post, 'Post cannot have an empty title.'
 
       it 'should fail when body is empty', ->
         @post.bind 'error', @eventSpy
-        @post.save title: 'title', body: ''
+        @post.save title: 'title', body: '', teaser: 'teaser'
         expect(@eventSpy).toHaveBeenCalledOnce()
         expect(@eventSpy).toHaveBeenCalledWith @post, 'Post cannot have an empty body.'
+
+      it 'should fail when teaser is empty', ->
+        @post.bind 'error', @eventSpy
+        @post.save title: 'title', body: 'body', teaser: ''
+        expect(@eventSpy).toHaveBeenCalledOnce()
+        expect(@eventSpy).toHaveBeenCalledWith @post, 'Post cannot have an empty teaser.'

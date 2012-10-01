@@ -14,11 +14,12 @@ require.config
     text: '../vendor/requirejs-text/text'
     handlebars: 'http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0.beta6/handlebars.min'
 
-require ['jquery', 'backbone', 'routers/router', 'collections/posts', 'views/posts', 'models/post', 'views/post'], ($, Backbone, RouterLoader, PostsLoader, PostsViewLoader, PostLoader, PostViewLoader) ->
+require ['jquery', 'backbone', 'routers/router', 'collections/posts', 'views/posts', 'models/post', 'views/post', 'views/postTeaser'], ($, Backbone, RouterLoader, PostsLoader, PostsViewLoader, PostLoader, PostViewLoader, PostTeaserViewLoader) ->
   Post = new PostLoader
   PostView = new PostViewLoader
+  PostTeaserView = new PostTeaserViewLoader
   Posts = new PostsLoader Post
-  PostsView = new PostsViewLoader PostView
+  PostsView = new PostsViewLoader PostTeaserView
 
   Router = new RouterLoader Posts, PostsView, Post, PostView
   router = new Router appEl: $ '#app'

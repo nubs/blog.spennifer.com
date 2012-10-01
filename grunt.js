@@ -13,6 +13,7 @@ module.exports = function(grunt) {
           'build/scripts/routers/router.js': 'scripts/routers/router.coffee',
           'build/scripts/views/posts.js': 'scripts/views/posts.coffee',
           'build/scripts/views/post.js': 'scripts/views/post.coffee',
+          'build/scripts/views/postTeaser.js': 'scripts/views/postTeaser.coffee',
           'build/scripts/main.js': 'scripts/main.coffee',
           'build/index.js': 'index.coffee'
         }
@@ -39,7 +40,8 @@ module.exports = function(grunt) {
           'build/specs/ui/routers/routes.spec.js': 'specs/ui/routers/routes.spec.coffee',
           'build/specs/ui/routers/routers.spec.js': 'specs/ui/routers/routers.spec.coffee',
           'build/specs/ui/views/posts.spec.js': 'specs/ui/views/posts.spec.coffee',
-          'build/specs/ui/views/post.spec.js': 'specs/ui/views/post.spec.coffee'
+          'build/specs/ui/views/post.spec.js': 'specs/ui/views/post.spec.coffee',
+          'build/specs/ui/views/postTeaser.spec.js': 'specs/ui/views/postTeaser.spec.coffee'
         }
       },
       apispecs: {

@@ -1,14 +1,14 @@
-define ['views/post'], (PostViewLoader) ->
-  describe 'Post view', ->
+define ['views/postTeaser'], (PostTeaserViewLoader) ->
+  describe 'Post teaser view', ->
     beforeEach ->
-      PostView = new PostViewLoader
+      PostTeaserView = new PostTeaserViewLoader
       @model = new Backbone.Model
         _id: 1
         title: 'A blog post'
         body: '<p>Sample body</p>'
         teaser: 'Sample teaser'
         published: false
-      @view = new PostView model: @model
+      @view = new PostTeaserView model: @model
 
     describe 'root element', ->
       it 'should be a list item', ->
@@ -31,4 +31,4 @@ define ['views/post'], (PostViewLoader) ->
         expect(@view.$ 'h2').toHaveText 'A blog post'
 
       it 'should have the correct body element', ->
-        expect(@view.$ 'article > p').toHaveText 'Sample body'
+        expect(@view.$ 'article').toHaveText 'Sample teaser'
