@@ -5,6 +5,7 @@ define ['views/post'], (PostViewLoader) ->
       @model = new Backbone.Model
         _id: 1
         title: 'A blog post'
+        body: '<p>Sample body</p>'
         published: false
       @view = new PostView model: @model
 
@@ -27,3 +28,6 @@ define ['views/post'], (PostViewLoader) ->
 
       it 'should have the correct title text', ->
         expect(@view.$ 'h2').toHaveText 'A blog post'
+
+      it 'should have the correct body element', ->
+        expect(@view.$ 'article > p').toHaveText 'Sample body'

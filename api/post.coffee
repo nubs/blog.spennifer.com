@@ -15,6 +15,7 @@ module.exports = (mongoose) ->
   app.post '/', (req, res) ->
     post = new Post
       title: req.body.title
+      body: req.body.body
     post.save (err, post) ->
       res.send post
 

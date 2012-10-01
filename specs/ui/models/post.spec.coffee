@@ -2,7 +2,9 @@ define ['models/post', '../fixtures/post', '../helpers/helpers'], (PostLoader, P
   describe 'Post model', ->
     beforeEach ->
       Post = new PostLoader
-      @post = new Post title: PostFixtures.valid[0].title
+      @post = new Post
+        title: PostFixtures.valid[0].title
+        body: PostFixtures.valid[0].body
 
     describe 'when instantiated', ->
       it 'should exhibit attributes', ->
@@ -30,6 +32,12 @@ define ['models/post', '../fixtures/post', '../helpers/helpers'], (PostLoader, P
 
       it 'should fail when title is empty', ->
         @post.bind 'error', @eventSpy
-        @post.save title: ''
+        @post.save title: '', body: 'body'
         expect(@eventSpy).toHaveBeenCalledOnce()
         expect(@eventSpy).toHaveBeenCalledWith @post, 'Post cannot have an empty title.'
+
+      it 'should fail when body is empty', ->
+        @post.bind 'error', @eventSpy
+        @post.save title: 'title', body: ''
+        expect(@eventSpy).toHaveBeenCalledOnce()
+        expect(@eventSpy).toHaveBeenCalledWith @post, 'Post cannot have an empty body.'

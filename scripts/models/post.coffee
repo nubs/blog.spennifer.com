@@ -7,3 +7,4 @@ define ['backbone'], (Backbone) ->
         published: false
       validate: (attributes) ->
         return 'Post cannot have an empty title.' unless attributes.title
+        return 'Post cannot have an empty body.' unless attributes.body
