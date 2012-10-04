@@ -11,9 +11,12 @@ define ['jquery', 'backbone', 'routers/router'], ($, Backbone, RouterLoader) ->
       @postStub = sinon.stub().returns @post
       @postViewStub = sinon.stub().returns new Backbone.View tagName: 'hr'
 
-      Router = new RouterLoader @postsStub, @postsViewStub, @postStub, @postViewStub
+      @headerViewStub = sinon.stub().returns new Backbone.View tagName: 'h1'
+
+      Router = new RouterLoader @postsStub, @postsViewStub, @postStub, @postViewStub, @headerViewStub
       @appEl = $ '<div>'
-      @router = new Router appEl: @appEl
+      @headerEl = $ '<header>'
+      @router = new Router appEl: @appEl, headerEl: @headerEl
 
     describe 'Index handler', ->
       beforeEach ->
@@ -26,6 +29,10 @@ define ['jquery', 'backbone', 'routers/router'], ($, Backbone, RouterLoader) ->
       it 'should create a posts view', ->
         expect(@postsViewStub).toHaveBeenCalledOnce()
         expect(@postsViewStub).toHaveBeenCalledWith collection: @collection, app: @router
+
+      it 'should create a header view', ->
+        expect(@headerViewStub).toHaveBeenCalledOnce()
+        expect(@headerViewStub).toHaveBeenCalledWith el: @headerEl, app: @router
 
       it 'shoud fetch the posts collection from the server', ->
         expect(@collectionFetchStub).toHaveBeenCalledOnce()
@@ -45,6 +52,10 @@ define ['jquery', 'backbone', 'routers/router'], ($, Backbone, RouterLoader) ->
       it 'should create a post view', ->
         expect(@postViewStub).toHaveBeenCalledOnce()
         expect(@postViewStub).toHaveBeenCalledWith model: @post, app: @router
+
+      it 'should create a header view', ->
+        expect(@headerViewStub).toHaveBeenCalledOnce()
+        expect(@headerViewStub).toHaveBeenCalledWith el: @headerEl, app: @router
 
       it 'shoud fetch the post from the server', ->
         expect(@postFetchStub).toHaveBeenCalledOnce()

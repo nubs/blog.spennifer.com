@@ -1,10 +1,14 @@
 @import url(http://fonts.googleapis.com/css?family=Merriweather:900);
 
-header {
+#pageHeader {
 	background-color: #4f81bd;
 }
 
-header h1 {
+#pageHeader a:hover {
+	text-decoration: none;
+}
+
+#pageHeader h1 {
 	text-transform: uppercase;
 	text-align: center;
 	font-family: 'Merriweather', serif;

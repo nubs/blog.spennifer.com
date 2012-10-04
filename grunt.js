@@ -14,6 +14,7 @@ module.exports = function(grunt) {
           'build/scripts/views/posts.js': 'scripts/views/posts.coffee',
           'build/scripts/views/post.js': 'scripts/views/post.coffee',
           'build/scripts/views/postTeaser.js': 'scripts/views/postTeaser.coffee',
+          'build/scripts/views/header.js': 'scripts/views/header.coffee',
           'build/scripts/main.js': 'scripts/main.coffee',
           'build/index.js': 'index.coffee'
         }

@@ -14,13 +14,17 @@ require.config
     text: '../vendor/requirejs-text/text'
     handlebars: 'http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0.beta6/handlebars.min'
 
-require ['jquery', 'backbone', 'routers/router', 'collections/posts', 'views/posts', 'models/post', 'views/post', 'views/postTeaser'], ($, Backbone, RouterLoader, PostsLoader, PostsViewLoader, PostLoader, PostViewLoader, PostTeaserViewLoader) ->
+require ['jquery', 'backbone', 'routers/router', 'collections/posts', 'views/posts', 'models/post', 'views/post', 'views/postTeaser', 'views/header'], ($, Backbone, RouterLoader, PostsLoader, PostsViewLoader, PostLoader, PostViewLoader, PostTeaserViewLoader, HeaderViewLoader) ->
   Post = new PostLoader
   PostView = new PostViewLoader
   PostTeaserView = new PostTeaserViewLoader
   Posts = new PostsLoader Post
   PostsView = new PostsViewLoader PostTeaserView
+  HeaderView = new HeaderViewLoader
 
-  Router = new RouterLoader Posts, PostsView, Post, PostView
-  router = new Router appEl: $ '#app'
+  Router = new RouterLoader Posts, PostsView, Post, PostView, HeaderView
+  router = new Router
+    appEl: $ '#app'
+    headerEl: $ '#pageHeader'
+
   Backbone.history.start pushState: true
