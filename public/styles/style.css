@@ -22,6 +22,12 @@ body {
 #app, #leftSidebar, #rightSidebar {
 	background-color: #ffffff;
 	box-shadow:  0 0 10px #aaaaaa;
+	padding-left: 6px;
+	padding-right: 6px;
+}
+
+#app p {
+	font-size: 130%;
 }
 
 .container-fluid {
