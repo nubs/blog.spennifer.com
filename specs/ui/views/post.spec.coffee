@@ -21,14 +21,11 @@ define ['views/post'], (PostViewLoader) ->
       it 'should return the view object', ->
         expect(@renderResult).toEqual @view
 
-      it 'should have the correct element structure', ->
-        expect(@view.$el).toContain 'a h2'
-
-      it 'should have the correct URL', ->
-        expect(@view.$('a').attr 'href').toEqual '/posts/1'
+      it 'should have a heading', ->
+        expect(@view.$el).toContain 'h2'
 
       it 'should have the correct title text', ->
         expect(@view.$ 'h2').toHaveText 'A blog post'
 
       it 'should have the correct body element', ->
-        expect(@view.$ 'article > p').toHaveText 'Sample body'
+        expect(@view.$ '> p').toHaveText 'Sample body'
