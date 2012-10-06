@@ -4,13 +4,13 @@ define ['backbone'], (Backbone) ->
       initialize: (options) ->
         @appEl = options.appEl
         @headerEl = options.headerEl
+        @headerView = new HeaderView
+          el: @headerEl
+          app: this
       routes:
         '': 'index'
         'posts/:id': 'post'
       index: ->
-        @headerView = new HeaderView
-          el: @headerEl
-          app: this
         @posts = new Posts
         @postsView = new PostsView
           collection: @posts
@@ -18,9 +18,6 @@ define ['backbone'], (Backbone) ->
         @appEl.html @postsView.el
         @posts.fetch()
       post: (id) ->
-        @headerView = new HeaderView
-          el: @headerEl
-          app: this
         @post = new Post _id: id
         @postView = new PostView
           model: @post
