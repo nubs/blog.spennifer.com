@@ -1,7 +1,7 @@
 define ['underscore', 'backbone', 'handlebars', 'text!templates/post.hbs'], (_, Backbone, Handlebars, postTemplate) ->
   () ->
     PostView = Backbone.View.extend
-      tagName: 'li'
+      tagName: 'article'
       template: Handlebars.compile postTemplate
 
       events:

@@ -11,8 +11,8 @@ define ['views/post'], (PostViewLoader) ->
       @view = new PostView model: @model
 
     describe 'root element', ->
-      it 'should be a list item', ->
-        expect(@view.$el).toBe 'li'
+      it 'should be an article', ->
+        expect(@view.$el).toBe 'article'
 
     describe 'when rendered', ->
       beforeEach ->
