@@ -4,11 +4,7 @@
 	background-color: #4f81bd;
 }
 
-#pageHeader a:hover {
-	text-decoration: none;
-}
-
-#pageHeader h1 {
+#pageTitle {
 	text-transform: uppercase;
 	text-align: center;
 	font-family: 'Merriweather', serif;
@@ -17,6 +13,7 @@
 	margin: 0;
 	font-size: 63px;
 	line-height: 70px;
+	cursor: pointer;
 }
 
 body {
