@@ -2,18 +2,16 @@ define ['jquery', 'backbone', 'routers/router'], ($, Backbone, RouterLoader) ->
   describe 'Router', ->
     beforeEach ->
       @collection = new Backbone.Collection
+      @post = new Backbone.Model
+
       @collectionFetchStub = sinon.stub(@collection, 'fetch').returns null
       @postsStub = sinon.stub().returns @collection
+
       @postsViewStub = sinon.stub().returns new Backbone.View tagName: 'b'
-
-      @post = new Backbone.Model
-      @postFetchStub = sinon.stub(@post, 'fetch').returns null
-      @postStub = sinon.stub().returns @post
       @postViewStub = sinon.stub().returns new Backbone.View tagName: 'hr'
-
       @headerViewStub = sinon.stub().returns new Backbone.View tagName: 'h1'
 
-      Router = new RouterLoader @postsStub, @postsViewStub, @postStub, @postViewStub, @headerViewStub
+      Router = new RouterLoader @postsStub, @postsViewStub, @postViewStub, @headerViewStub
       @appEl = $ '<div>'
       @headerEl = $ '<header>'
       @router = new Router appEl: @appEl, headerEl: @headerEl
@@ -45,21 +43,14 @@ define ['jquery', 'backbone', 'routers/router'], ($, Backbone, RouterLoader) ->
       beforeEach ->
         @router.post '1'
 
-      it 'should create a post model', ->
-        expect(@postStub).toHaveBeenCalledOnce()
-        expect(@postStub).toHaveBeenCalledWith _id: '1'
-
-      it 'should create a post view', ->
-        expect(@postViewStub).toHaveBeenCalledOnce()
-        expect(@postViewStub).toHaveBeenCalledWith model: @post, app: @router
+      it 'should create a posts collection', ->
+        expect(@postsStub).toHaveBeenCalledOnce()
+        expect(@postsStub).toHaveBeenCalledWith()
 
       it 'should create a header view', ->
         expect(@headerViewStub).toHaveBeenCalledOnce()
         expect(@headerViewStub).toHaveBeenCalledWith el: @headerEl, app: @router
 
-      it 'shoud fetch the post from the server', ->
-        expect(@postFetchStub).toHaveBeenCalledOnce()
-        expect(@postFetchStub).toHaveBeenCalledWith()
-
-      it 'should add the post view to the application element.', ->
-        expect(@appEl).toContain 'hr'
+      it 'should fetch the posts collection from the server', ->
+        expect(@collectionFetchStub).toHaveBeenCalledOnce()
+        expect(@collectionFetchStub).toHaveBeenCalledWith()

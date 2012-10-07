@@ -22,7 +22,7 @@ require ['jquery', 'backbone', 'routers/router', 'collections/posts', 'views/pos
   PostsView = new PostsViewLoader PostTeaserView
   HeaderView = new HeaderViewLoader
 
-  Router = new RouterLoader Posts, PostsView, Post, PostView, HeaderView
+  Router = new RouterLoader Posts, PostsView, PostView, HeaderView
   router = new Router
     appEl: $ '#app'
     headerEl: $ '#pageHeader'

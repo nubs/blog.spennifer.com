@@ -1,5 +1,5 @@
-define ['backbone'], (Backbone) ->
-  (Posts, PostsView, Post, PostView, HeaderView) ->
+define ['underscore', 'backbone'], (_, Backbone) ->
+  (Posts, PostsView, PostView, HeaderView) ->
     Router = Backbone.Router.extend
       initialize: (options) ->
         @appEl = options.appEl
@@ -18,9 +18,16 @@ define ['backbone'], (Backbone) ->
         @appEl.html @postsView.el
         if @posts.isEmpty() then @posts.fetch() else @postsView.render()
       post: (id) ->
-        @post = if @posts? then @posts.get id else new Post _id: id
+        if @posts?
+          @loadPost id
+        else
+          @posts = new Posts
+          @posts.fetch
+            success: _.bind((-> @loadPost id), this)
+      loadPost: (id) ->
+        @post = @posts.get id
         @postView = new PostView
           model: @post
           app: this
         @appEl.html @postView.el
-        if @posts? then @postView.render() else @post.fetch()
+        @postView.render()

@@ -2,18 +2,16 @@ define ['jquery', 'routers/router'], ($, RouterLoader) ->
   describe 'Routes', ->
     beforeEach ->
       @collection = new Backbone.Collection
-      collectionFetchStub = sinon.stub(@collection, 'fetch').returns null
-      @postsStub = sinon.stub().returns @collection
-      @postsViewStub = sinon.stub()
-
       @post = new Backbone.Model
-      postFetchStub = sinon.stub(@post, 'fetch').returns null
-      @postStub = sinon.stub().returns @post
-      @postViewStub = sinon.stub()
 
+      @collectionFetchStub = sinon.stub(@collection, 'fetch').returns null
+      @postsStub = sinon.stub().returns @collection
+
+      @postsViewStub = sinon.stub()
+      @postViewStub = sinon.stub()
       @headerViewStub = sinon.stub()
 
-      Router = new RouterLoader @postsStub, @postsViewStub, @postStub, @postViewStub, @headerViewStub
+      Router = new RouterLoader @postsStub, @postsViewStub, @postViewStub, @headerViewStub
       @appEl = $ '<div>'
       @headerEl = $ '<header>'
       @router = new Router appEl: @appEl, headerEl: @headerEl
