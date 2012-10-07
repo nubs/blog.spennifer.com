@@ -11,16 +11,16 @@ define ['backbone'], (Backbone) ->
         '': 'index'
         'posts/:id': 'post'
       index: ->
-        @posts = new Posts
+        @posts ?= new Posts
         @postsView = new PostsView
           collection: @posts
           app: this
         @appEl.html @postsView.el
-        @posts.fetch()
+        if @posts.isEmpty() then @posts.fetch() else @postsView.render()
       post: (id) ->
-        @post = new Post _id: id
+        @post = if @posts? then @posts.get id else new Post _id: id
         @postView = new PostView
           model: @post
           app: this
         @appEl.html @postView.el
-        @post.fetch()
+        if @posts? then @postView.render() else @post.fetch()
