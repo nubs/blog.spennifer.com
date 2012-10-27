@@ -10,6 +10,7 @@ define ['underscore', 'backbone'], (_, Backbone) ->
       routes:
         '': 'index'
         'posts/:id': 'post'
+
       index: ->
         @posts ?= new Posts
         @postsView = new PostsView
@@ -17,6 +18,7 @@ define ['underscore', 'backbone'], (_, Backbone) ->
           app: this
         @appEl.html @postsView.el
         if @posts.isEmpty() then @posts.fetch() else @postsView.render()
+
       post: (id) ->
         if @posts?
           @loadPost id
@@ -24,6 +26,7 @@ define ['underscore', 'backbone'], (_, Backbone) ->
           @posts = new Posts
           @posts.fetch
             success: _.bind((-> @loadPost id), this)
+
       loadPost: (id) ->
         @post = @posts.get id
         @postView = new PostView
