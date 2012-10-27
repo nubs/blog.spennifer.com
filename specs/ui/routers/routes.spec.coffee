@@ -10,11 +10,14 @@ define ['jquery', 'routers/router'], ($, RouterLoader) ->
       @postsViewStub = sinon.stub()
       @postViewStub = sinon.stub()
       @headerViewStub = sinon.stub()
+      @postTeaserViewStub = sinon.stub().returns new Backbone.View tagName: 'i'
 
-      Router = new RouterLoader @postsStub, @postsViewStub, @postViewStub, @headerViewStub
+      Router = new RouterLoader @postsStub, @postsViewStub, @postViewStub, @headerViewStub, @postTeaserViewStub
       @appEl = $ '<div>'
       @headerEl = $ '<header>'
-      @router = new Router appEl: @appEl, headerEl: @headerEl
+      @leftEl = $ '<div>'
+      @rightEl = $ '<div>'
+      @router = new Router appEl: @appEl, headerEl: @headerEl, leftEl: @leftEl, rightEl: @rightEl
       @routeSpy = sinon.spy()
       try Backbone.history.start silent: true
 

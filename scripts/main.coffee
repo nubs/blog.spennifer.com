@@ -22,9 +22,11 @@ require ['jquery', 'backbone', 'routers/router', 'collections/posts', 'views/pos
   PostsView = new PostsViewLoader PostTeaserView
   HeaderView = new HeaderViewLoader
 
-  Router = new RouterLoader Posts, PostsView, PostView, HeaderView
+  Router = new RouterLoader Posts, PostsView, PostView, HeaderView, PostTeaserView
   router = new Router
     appEl: $ '#app'
     headerEl: $ '#pageHeader'
+    leftEl: $ '#leftSidebar'
+    rightEl: $ '#rightSidebar'
 
   Backbone.history.start pushState: true
